@@ -1,0 +1,131 @@
+<!-- Task:
+Create a webpage using JavaScript and the DOM that dynamically generates
+ a list of car brands and their details. Follow these steps:
+
+Create a div container to hold all car details.
+Create an array of car objects with the following properties:
+brand (e.g., Toyota, BMW, Ford)
+model (e.g., Corolla, X5, Mustang)
+year (e.g., 2020, 2021, 2022)
+Loop through the array and create a new div for each car. Inside this div, add:
+An h2 tag for the car brand
+A p tag to display the model and year
+A button that, when clicked, displays an alert with the car’s details.
+Apply different background colors based on the car's brand 
+(e.g., Toyota = yellow, BMW = blue, Ford = gray).
+Style the divs to look like car info cards using JavaScript. -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car brands website</title>
+</head>
+
+<body>
+
+    <script>
+        let container=document.createElement("div")
+        container.classList.add("container")
+        document.body.appendChild(container)
+
+        let cars=[
+            {brand:"Toyota",model:"Corolla",year:"2020"},
+            {brand:"BMW",model:"X5",year:"2021"},
+            {brand:"Ford",model:"Mustang",year:"2022"}
+        ]
+        cars.forEach((car)=>{
+            let carContainer=document.createElement("div")
+            carContainer.classList.add("carContainer")
+           
+            let heading=document.createElement("h2")
+             heading.textContent=car.brand
+
+        let paragraph=document.createElement("p")
+        paragraph.innerHTML=`
+        <span>model:${car.model}</span><br>
+         <span>year:${car.year}</span><br>
+        
+        `
+        if(car.brand==="Toyota"){
+            carContainer.style.backgroundColor="yellow"
+            carContainer.style.color="gray"
+            
+            
+           
+
+        }
+        else if(car.brand==="BMW"){
+             carContainer.style.backgroundColor="blue"
+             carContainer.style.color="white"
+
+        }
+        else if(car.brand==="Ford"){
+             carContainer.style.backgroundColor="gray"
+             carContainer.style.color="yellow"
+
+        }
+       
+    
+             let button=document.createElement("button")
+            button.textContent="Show Details"
+            button.classList.add("button")
+            button.addEventListener("click",()=>{
+                alert(`Brand:${car.brand}\nModel:${car.model}\nYear:${car.year}`)
+             
+            }) 
+        
+        carContainer.appendChild(heading)
+        carContainer.appendChild(paragraph)
+        carContainer.appendChild(button)
+        container.appendChild(carContainer)
+        
+
+        })
+        
+
+        container.style.display="flex"
+        container.style.gap="20px"
+        container.style.alignItems="center"
+        /* container.style.margin="60px" */
+        container.style.justifyContent="space-around"
+        container.style.backgroundColor="pink"
+        container.style.width="80%"
+        container.style.padding="40px"
+
+         document.querySelectorAll(".carContainer").forEach(car=>{
+            car.style.fontSize="24px"
+            car.style.width="20%"
+            car.style.padding="20px"
+            car.style.textAlign="center"
+            car.style.borderRadius="12px"
+            
+            
+        })
+        
+        
+        
+         
+         
+
+        
+
+      
+
+
+       
+
+    
+
+
+
+
+        
+
+        
+    </script>
+    
+</body>
+</html>
